@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+int length(char c[]){
+    int count=0;
+    for(int i =0;c[i]!='\0'; i++){
+        count++;
+    }
+    return count;
+}
+void removeExtra(char c[] , int n ){
+    for(int i =0;i<n ; i++){
+        if( (c[i]>='a' && c[i]<='z') || (c[i]>='A'&&c[i]<='Z') || (c[i]>='0' && c[i]<='9')      ){
+            
+        }
+        else{
+            c[i]=' ';
+        }
+    }
+}
+void lowerCase(char c[] , int n){
+    char temp;
+    for(int i =0;i<n;i++){
+        if(c[i]>='A' && c[i]<='Z'){
+            temp= c[i] - 'A' + 'a';
+            c[i]= temp;
+        }
+    }
+}
+int palindromne(char c[],int n){
+    int  x =1 ;
+    int i =0, j=n-1;
+   
+    while(i<j){
+     
+        if(c[i]==' '){
+            i++;
+        }
+        else if(c[j]==' '){
+            j--;
+        }
+        else {
+            if(c[i]==c[j]){
+                i++;j--;
+            }
+            else{
+                x = 0;
+                return x;
+                break;
+            }
+        }
+    }
+    return x;
+}
+
+int main(){
+ char c[100];
+ cin>>c;
+ //cout<< c<< endl;
+ int n =length(c);
+ removeExtra(c , n);
+ cout<< c<< endl;
+ lowerCase(c , n);
+ cout<< c << endl;
+ int t = palindromne(c , n);
+ cout<<t<< endl;
+
+}
